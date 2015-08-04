@@ -1,7 +1,7 @@
 {
   "name": "front-matter-markdown",
   "description": "get the config and toc object from the markdown string.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/snowyu/front-matter-markdown.js",
   "repository": {
     "type": "git",
