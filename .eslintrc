@@ -1,0 +1,23 @@
+rules:
+  indent:
+    - 1
+    - 2
+  quotes:
+    - 2
+    - single
+  linebreak-style:
+    - 2
+    - unix
+  semi: 0
+  semi-spacing: 0
+  strict: 0
+  no-underscore-dangle: 0
+  no-multi-spaces: 0
+  curly: 0
+  no-shadow: 1
+  camelcase: 1
+  no-empty: 1
+  space-infix-ops: 1
+env:
+  node: true
+  browser: true
