@@ -14,6 +14,7 @@ getHeadingSection = require('../src/markdown/get-heading-section')
 getListSection    = require('../src/markdown/get-list-section')
 AstParser         = require('../src/markdown/ast-parser')
 list2FileObject   = require('../src/markdown/ast-list-to-file-object')
+getTocFromHeading = require('../src/markdown/get-toc-from-heading')
 
 describe 'Markdown', ->
   describe 'skipSpace', ->
@@ -171,6 +172,26 @@ describe 'Markdown', ->
         ]
       assert.deepEqual actural, expected
 
+  describe 'getTocFromHeading', ->
+    it 'should get a plain file object', ->
+      actural = markdown.lexer(mkdn)
+      actural = getTocFromHeading(actural)
+      expected = 'contents': [
+        { 'title': 'heading1' }
+        {
+          'title': 'heading2'
+          'contents': [ {
+            'title': 'Summary'
+            'contents': [ {
+              'title': 'heading4'
+              'path': './heading4'
+            } ]
+          } ]
+        }
+      ]
+      assert.deepEqual actural, expected
+
+
 
 mkdn = """
 hlleo
@@ -201,6 +222,10 @@ heading2End
 * listSummary2
 
 summaryEnd
+
+### [heading4](./heading4)
+
+heading4End
 """
 
 mkdnList =

@@ -7,23 +7,27 @@ getListSection    = require('./get-list-section')
 skipSpace         = require('./skip-space')
 extractType       = require('./extract-type')
 AstParser         = require('./ast-parser')
-list2FileObject   = require('./ast-list-to-file-object')
+headings2FileObject = require('./ast-headings-to-file-object')
 
 
 module.exports = getToc = (aContent, aOptions)->
   #TODO: not fined.
   aOptions ?= {}
+  firstLevel = aOptions.firstLevel || 1
+  maxDepth  = aOptions.maxDepth || 3
   aContent = markdown.lexer(aContent) if isString(aContent)
   links = aContent.links
-  if isFunction aOptions.filter
-    result = extractType aContent, 'heading', (node)->
-      aOptions.filter node.text
-  else
-    result = extractType aContent, 'heading'
+  result = extractType aContent, 'heading', (node)->
+    result = node.depth >= firstLevel and (node.depth - firstLevel) <= maxDepth
+    result = aOptions.filter node.text if result and isFunction aOptions.filter
+    result
   result.links = links if links
   result = AstParser.parse(result)
-  #console.log JSON.stringify result[0]
-  return
+  result = headings2FileObject(result)
+  result
+
+
+
 
 getToc """
 # [dddd][dd]
