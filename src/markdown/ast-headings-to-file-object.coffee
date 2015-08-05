@@ -20,6 +20,7 @@ module.exports = class AstHeadingsToFileObject
         level = node.level
       contents.push obj
       lastObj = obj
+    result = null unless result.contents.length
     return result
 
   @textToObject: textToObject = (textNode)->
