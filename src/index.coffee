@@ -19,14 +19,17 @@ module.exports = (aContent, aOptions)->
   result = matter(aContent, aOptions)
   aContent = result.content
   result = result.data
+  unless result.content or aOptions.content is false
+    defineProperty result, 'content', aContent
 
   if isString aOptions.heading
     headings = [aOptions.heading]
   else if isArray aOptions.heading
     headings = aOptions.heading
   else
-    headings = ['toc', 'table of content', 'summary']
+    headings = ['toc', /table of content/, 'summary']
   compiled = markdown.lexer aContent
+  defineProperty result, '$compiled', compiled unless aOptions.contents is false
 
   if aOptions.toc isnt false
     toc = getTocFromList(compiled, headings)

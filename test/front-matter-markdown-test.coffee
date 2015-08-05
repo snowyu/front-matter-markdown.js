@@ -15,6 +15,8 @@ describe 'frontMatterMarkdown', ->
     expected =
       'config1': 123
     assert.deepEqual actural, expected
+    actural.should.have.ownProperty 'content'
+    actural.should.have.ownProperty '$compiled'
   it 'should get config object from markdown string and disable toc heading', ->
     actural = config mkdn, toc:false
     expected =
