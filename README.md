@@ -30,12 +30,33 @@ title: this is a title
 # this is a inline heading {#inline}
 
 """
-console.log(parseMarkdown markdownStr)
+console.log(JSON.stringify parseMarkdown(markdownStr), null, 1)
 ```
 
 the results:
 
 ```bash
+{
+ "title": "this is a title",
+ "ordered": false,
+ "contents": [
+  {
+   "title": "Directory",
+   "path": "./dir1",
+   "ordered": false,
+   "contents": [
+    {
+     "title": "Directory2",
+     "path": "/dir2"
+    }
+   ]
+  },
+  {
+   "title": "Directory3",
+   "path": "#inline"
+  }
+ ]
+}
 ```
 
 
@@ -47,6 +68,9 @@ var parseMarkdown = require('front-matter-markdown');
 
 * `parseMarkdown(aMarkdownString, aOptions)`: parse a markdown string to a plain object.
   * `aOptions`*(Object)*:
+    * `content` *(Boolean)*: whether extract the markdown content from configuration.
+      defaults to true. it will store the compiled markdown to `$compiled` too.
+      * **Note**: the `content` and `$compiled` attributes are non-enumerable.
     * `toc` *(Boolean)*: whether extract the directory from the list in the specified heading.
       defaults to true.
     * `heading` *(String|RegExp|ArrayOf(String))*: the heading(s) to extract the directory.
