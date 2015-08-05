@@ -7,7 +7,123 @@ assert          = chai.assert
 chai.use(sinonChai)
 
 
-#loadConfig      = require '../src/'
+config      = require '../src/'
 
 describe 'frontMatterMarkdown', ->
-  it 'should add a config file name', ->
+  it 'should get config object from markdown string and disable directoy', ->
+    actural = config mkdn, toc:false, headingsAsToc: false
+    expected =
+      'config1': 123
+    assert.deepEqual actural, expected
+  it 'should get config object from markdown string and disable toc heading', ->
+    actural = config mkdn, toc:false
+    expected =
+      'config1': 123
+      'contents': [
+        title: 'Heading1'
+      ]
+    assert.deepEqual actural, expected
+
+  it 'should get config object from markdown string with summary heading', ->
+    actural = config(mkdn)
+    expected =
+      'config1': 123
+      'ordered': false
+      'contents': [
+        {
+          'title': 'Dir1'
+          'path': './dir1'
+        }
+        {
+          'title': 'Dir2'
+          'contents': [
+            { 'title': 'Dir21' }
+            { 'title': 'Dir22' }
+          ]
+          'path': './dir2'
+          'ordered': false
+        }
+        { 'title': 'Dir3' }
+      ]
+    assert.deepEqual actural, expected
+  it 'should get config object from markdown string with no summary heading', ->
+    actural = config(mkdn2)
+    expected =
+      'config1': 123
+      'contents': [
+        { 'title': 'Heading1' }
+        {
+          'title': 'Heading2'
+          'path': './heading2'
+          'contents': [
+            {
+              'title': 'Heading21'
+              'path': './heading21'
+            }
+            {
+              'title': 'Heading22'
+              'path': './heading22'
+              'contents': [ {
+                'title': 'Heading221'
+                'path': './heading221'
+              } ]
+            }
+          ]
+        }
+      ]
+    assert.deepEqual actural, expected
+    #console.log JSON.stringify actural
+
+
+
+mkdn = """
+---
+config1: 123
+---
+# Summary
+
+* [Dir1](./dir1)
+* [Dir2][dir2]
+  * Dir21
+  * Dir22
+* Dir3
+
+# Heading1
+
+heading1End
+
+[dir2]: ./dir2
+"""
+
+mkdn2 = """
+---
+config1: 123
+---
+# Heading1
+
+heading1End
+
+# [Heading2][Heading2]
+
+heading2End
+
+## [Heading21][Heading21]
+
+heading21End
+
+## [Heading22][Heading22]
+
+heading22End
+
+### [Heading221][Heading221]
+
+heading221End
+
+#### Nothong
+
+[dir2]: ./dir2
+[Heading2]: ./heading2
+[Heading21]: ./heading21
+[Heading221]: ./heading221
+[Heading22]: ./heading22
+"""

@@ -47,11 +47,12 @@ var parseMarkdown = require('front-matter-markdown');
 
 * `parseMarkdown(aMarkdownString, aOptions)`: parse a markdown string to a plain object.
   * `aOptions`*(Object)*:
-    * `directory` *(Boolean)*: whether extract the directory from the specified heading. defaults to true.
+    * `toc` *(Boolean)*: whether extract the directory from the list in the specified heading.
+      defaults to true.
     * `heading` *(String|RegExp|ArrayOf(String))*: the heading(s) to extract the directory.
       defaults to ['TOC', 'Table Of Content', 'Summary']
-    * `generate` *(Boolean|Object)*: whether `generate` the directory from the headings of markdown.
-      defaults to true.
+    * `headingsAsToc` *(Boolean|Object)*: whether `generate` the directory from the headings of markdown.
+      defaults to true. It will `generate` the toc if no toc list in the specified heading(`toc` enabled).
       * `maxDepth` *(Number)*: Use headings whose depth is at most max depth for `generate`.
         defaluts to 3.
       * `firstLevel` *(Number)*: the first level to `generate` the directory from the headings of markdown.

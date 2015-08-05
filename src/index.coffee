@@ -16,7 +16,7 @@ module.exports = (aContent, aOptions)->
 
   aOptions ?= {}
 
-  result = matter(aMarkdownString, aOptions)
+  result = matter(aContent, aOptions)
   aContent = result.content
   result = result.data
 
@@ -28,11 +28,12 @@ module.exports = (aContent, aOptions)->
     headings = ['toc', 'table of content', 'summary']
   compiled = markdown.lexer aContent
 
-  toc = getTocFromList(compiled, headings) if aOptions.directory isnt false
-  if !(toc and toc.contents.length) and aOptions.generate isnt false
-    aOptions = aOptions.generate
-    aOptions ?= {}
-    aOptions.filter = headingFilter aOptions.filter
+  if aOptions.toc isnt false
+    toc = getTocFromList(compiled, headings)
+  if !(toc and toc.contents.length) and aOptions.headingsAsToc isnt false
+    aOptions = aOptions.headingsAsToc
+    aOptions = {} unless isObject aOptions
+    aOptions.filter = headingFilter headings, aOptions.filter
     toc = getToc(compiled, aOptions)
   extend result, toc if toc and toc.contents.length
   result
