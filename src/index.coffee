@@ -29,7 +29,7 @@ module.exports = (aContent, aOptions)->
   else
     headings = ['toc', /table of content/, 'summary']
   compiled = markdown.lexer aContent
-  defineProperty result, '$compiled', compiled unless aOptions.contents is false
+  defineProperty result, '$compiled', compiled unless aOptions.content is false
 
   if aOptions.toc isnt false
     toc = getTocFromList(compiled, headings)
