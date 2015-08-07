@@ -7,7 +7,7 @@
 [![license](https://img.shields.io/npm/l/front-matter-markdown.svg)](https://npmjs.org/package/front-matter-markdown)
 
 Get the config object from a markdown string. It will extract configuration from [front-matter](http://jekyllrb.com/docs/frontmatter/).
-And get the `directory` from the list of heading `TOC/Table Of Content/Summary`.
+And get the directory(`contents`) from the list of heading `TOC/Table Of Content/Summary`.
 It will generate a TOC from the markdown string if the list is empty
 
 
@@ -73,7 +73,7 @@ var parseMarkdown = require('front-matter-markdown');
       defaults to true. it will store the compiled markdown to `$compiled` too.
       * **Note**: the `content` and `$compiled` attributes are non-enumerable.
     * `toc` *(Boolean)*: whether extract the directory from the list in the specified heading.
-      defaults to true.
+      defaults to true. the 'directoy' is put into `contents` attributes.
     * `heading` *(String|RegExp|ArrayOf(String))*: the heading(s) to extract the directory.
       defaults to ['TOC', 'Table Of Content', 'Summary']
     * `headingsAsToc` *(Boolean|Object)*: whether `generate` the directory from the headings of markdown.
