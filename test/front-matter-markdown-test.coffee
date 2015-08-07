@@ -14,13 +14,16 @@ describe 'frontMatterMarkdown', ->
     actural = config mkdn, toc:false, headingsAsToc: false
     expected =
       'config1': 123
+      'skipSize': 21
     assert.deepEqual actural, expected
     actural.should.have.ownProperty 'content'
     actural.should.have.ownProperty '$compiled'
+    actural.should.have.property 'skipSize', 21
   it 'should get config object from markdown string and disable directoy and content', ->
     actural = config mkdn, toc:false, headingsAsToc: false, content:false
     expected =
       'config1': 123
+      'skipSize': 21
     assert.deepEqual actural, expected
     actural.should.not.have.ownProperty 'content'
     actural.should.not.have.ownProperty '$compiled'
@@ -28,6 +31,7 @@ describe 'frontMatterMarkdown', ->
     actural = config mkdn, toc:false
     expected =
       'config1': 123
+      'skipSize': 21
       'contents': [
         title: 'Heading1'
       ]
@@ -37,6 +41,7 @@ describe 'frontMatterMarkdown', ->
     actural = config(mkdn)
     expected =
       'config1': 123
+      'skipSize': 21
       'ordered': false
       'contents': [
         {
@@ -59,6 +64,7 @@ describe 'frontMatterMarkdown', ->
     actural = config(mkdn2)
     expected =
       'config1': 123
+      'skipSize': 21
       'contents': [
         { 'title': 'Heading1' }
         {

@@ -38,6 +38,7 @@ the results:
 ```bash
 {
  "title": "this is a title",
+ "skipSize": 31,
  "ordered": false,
  "contents": [
   {

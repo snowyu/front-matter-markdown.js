@@ -17,8 +17,10 @@ module.exports = (aContent, aOptions)->
   aOptions ?= {}
 
   result = matter(aContent, aOptions)
+  vSkipSize = aContent.length - result.content.length
   aContent = result.content
   result = result.data
+  result.skipSize = vSkipSize if vSkipSize > 0
   unless result.content or aOptions.content is false
     defineProperty result, 'content', aContent
 
