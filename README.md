@@ -83,6 +83,33 @@ var parseMarkdown = require('front-matter-markdown');
       * `firstLevel` *(Number)*: the first level to `generate` the directory from the headings of markdown.
         defaluts to 1.
 
+## Changes
+
+### v0.3
+
++ markdown inline options to control parser.
+
+```coffee
+markdownStr = """
+  ---
+  title: this is a title
+  toc: false
+  headingsAsToc: false
+  ---
+  # table of contents
+
+  * [Directory](./dir1)
+    * [Directory2](/dir2)
+  * [Directory3](#inline)
+
+  # this is a inline heading {#inline}
+  """
+result = parseMarkdown(markdownStr) #=parseMarkdown markdownStr,
+                                    #   toc:false
+                                    #   headingsAsToc: false
+
+```
+
 ## License
 
 MIT
