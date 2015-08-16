@@ -12,6 +12,12 @@ headingFilter   = require('./gen-heading-filter')
 
 getKeys     = Object.keys
 
+assignDefaults = (aOptions, aConfig)->
+  aOptions.heading ?= aConfig.heading if aConfig.heading
+  aOptions.headingsAsToc ?= aConfig.headingsAsToc if aConfig.headingsAsToc?
+  aOptions.toc ?= aConfig.toc if aConfig.toc?
+  aOptions
+
 module.exports = (aContent, aOptions)->
 
   aOptions ?= {}
@@ -23,6 +29,8 @@ module.exports = (aContent, aOptions)->
   result.skipSize = vSkipSize if vSkipSize > 0
   unless result.content or aOptions.content is false
     defineProperty result, 'content', aContent
+
+  assignDefaults(aOptions, result)
 
   if isString aOptions.heading
     headings = [aOptions.heading]

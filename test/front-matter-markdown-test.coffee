@@ -23,6 +23,31 @@ describe 'frontMatterMarkdown', ->
       'config': 'file0'
       'skipSize': 22
     assert.deepEqual actural, expected
+  it 'should get config object with inline options', ->
+    s = """
+    ---
+    config: file0
+    toc: false
+    headingsAsToc: false
+    heading: 'table of content'
+    ---
+
+    this file0.
+
+    # table of content
+
+    * [Directory](./dir1)
+      * [Directory2](/dir2)
+    * [Directory3](#inline)
+    """
+    actural = config s
+    expected =
+      'config': 'file0'
+      toc: false
+      headingsAsToc: false
+      heading: 'table of content'
+      'skipSize': 82
+    assert.deepEqual actural, expected
   it 'should get config object from markdown string and disable directoy', ->
     actural = config mkdn, toc:false, headingsAsToc: false
     expected =
