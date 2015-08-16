@@ -35,10 +35,10 @@ module.exports = (aContent, aOptions)->
 
   if aOptions.toc isnt false
     toc = getTocFromList(compiled, headings)
-  if !(toc and toc.contents.length) and aOptions.headingsAsToc isnt false
+  if !(toc and toc.contents and toc.contents.length) and aOptions.headingsAsToc isnt false
     aOptions = aOptions.headingsAsToc
     aOptions = {} unless isObject aOptions
     aOptions.filter = headingFilter headings, aOptions.filter
     toc = getToc(compiled, aOptions)
-  extend result, toc if toc and toc.contents.length
+  extend result, toc if toc and toc.contents and toc.contents.length
   result

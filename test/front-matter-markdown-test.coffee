@@ -10,6 +10,19 @@ chai.use(sinonChai)
 config      = require '../src/'
 
 describe 'frontMatterMarkdown', ->
+  it 'should get config object from a simple markdown string without any toc info', ->
+    s = """
+    ---
+    config: file0
+    ---
+
+    this file0.
+    """
+    actural = config s
+    expected =
+      'config': 'file0'
+      'skipSize': 22
+    assert.deepEqual actural, expected
   it 'should get config object from markdown string and disable directoy', ->
     actural = config mkdn, toc:false, headingsAsToc: false
     expected =
