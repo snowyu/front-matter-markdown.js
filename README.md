@@ -73,11 +73,11 @@ var parseMarkdown = require('front-matter-markdown');
       defaults to true. it will store the compiled markdown to `$compiled` too.
       * **Note**: the `content` and `$compiled` attributes are non-enumerable.
     * `toc` *(Boolean)*: whether extract the directory from the list in the specified heading.
-      defaults to true. the 'directoy' is put into `contents` attributes.
+      defaults to false. the 'directoy' is put into `contents` attributes.
     * `heading` *(String|RegExp|ArrayOf(String))*: the toc list in the heading(s) to extract the directory.
       defaults to ['TOC', 'Table Of Content', 'Summary']
     * `headingsAsToc` *(Boolean|Object)*: whether `generate` the directory from the headings of markdown.
-      defaults to true. It will `generate` the toc if no toc list in the specified heading(`toc` enabled).
+      defaults to false. It will `generate` the toc if no toc list in the specified heading(`toc` enabled).
       * `maxDepth` *(Number)*: Use headings whose depth is at most max depth for `generate`.
         defaluts to 3.
       * `firstLevel` *(Number)*: the first level to `generate` the directory from the headings of markdown.
@@ -92,6 +92,7 @@ var parseMarkdown = require('front-matter-markdown');
   * heading: the toc list in the heading section.
   * headingsAsToc
 + setOptionAlias function
+* **broken**: toc, headingsAsToc options is defaults to false now.
 
 ```coffee
 markdownStr = """

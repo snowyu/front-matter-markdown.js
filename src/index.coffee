@@ -44,9 +44,9 @@ module.exports = fmMarkdown = (aContent, aOptions)->
   compiled = markdown.lexer aContent
   defineProperty result, '$compiled', compiled unless aOptions.content is false
 
-  if aOptions.toc isnt false
+  if aOptions.toc
     toc = getTocFromList(compiled, headings)
-  if !(toc and toc.contents and toc.contents.length) and aOptions.headingsAsToc isnt false
+  if !(toc and toc.contents and toc.contents.length) and aOptions.headingsAsToc
     aOptions = aOptions.headingsAsToc
     aOptions = {} unless isObject aOptions
     aOptions.filter = headingFilter headings, aOptions.filter
