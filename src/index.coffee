@@ -12,13 +12,16 @@ headingFilter   = require('./gen-heading-filter')
 
 getKeys     = Object.keys
 
+gAliases = {} # the config options aliases
+
 assignDefaults = (aOptions, aConfig)->
-  aOptions.heading ?= aConfig.heading if aConfig.heading
-  aOptions.headingsAsToc ?= aConfig.headingsAsToc if aConfig.headingsAsToc?
-  aOptions.toc ?= aConfig.toc if aConfig.toc?
+  for k in getKeys gAliases
+    if aConfig[k]?
+      v = gAliases[k]
+      aOptions[v] ?= aConfig[k]
   aOptions
 
-module.exports = (aContent, aOptions)->
+module.exports = fmMarkdown = (aContent, aOptions)->
 
   aOptions ?= {}
 
@@ -50,3 +53,13 @@ module.exports = (aContent, aOptions)->
     toc = getToc(compiled, aOptions)
   extend result, toc if toc and toc.contents and toc.contents.length
   result
+
+fmMarkdown.setOptionAlias = (aOptionName, aAlias)->
+  unless aOptionName in ['toc', 'heading', 'headingsAsToc']
+    throw new TypeError('invalid option name')
+
+  if isArray aAlias
+    aAlias.forEach (i)->gAliases[i] = aOptionName
+  else if isString aAlias
+    gAliases[aAlias] = aOptionName
+  gAliases

@@ -9,6 +9,10 @@ chai.use(sinonChai)
 
 config      = require '../src/'
 
+config.setOptionAlias 'toc', 'toc'
+config.setOptionAlias 'heading', 'heading'
+config.setOptionAlias 'headingsAsToc', 'headingsAsToc'
+
 describe 'frontMatterMarkdown', ->
   it 'should get config object from a simple markdown string without any toc info', ->
     s = """
