@@ -92,7 +92,7 @@ var parseMarkdown = require('front-matter-markdown');
   * heading: the toc list in the heading section.
   * headingsAsToc
 + setOptionAlias function
-* **broken**: toc, headingsAsToc options is defaults to false now.
+* **broken**: toc, headingsAsToc options are defaults to false now.
 
 ```coffee
 markdownStr = """
