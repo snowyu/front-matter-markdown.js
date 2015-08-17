@@ -74,7 +74,7 @@ var parseMarkdown = require('front-matter-markdown');
       * **Note**: the `content` and `$compiled` attributes are non-enumerable.
     * `toc` *(Boolean)*: whether extract the directory from the list in the specified heading.
       defaults to true. the 'directoy' is put into `contents` attributes.
-    * `heading` *(String|RegExp|ArrayOf(String))*: the heading(s) to extract the directory.
+    * `heading` *(String|RegExp|ArrayOf(String))*: the toc list in the heading(s) to extract the directory.
       defaults to ['TOC', 'Table Of Content', 'Summary']
     * `headingsAsToc` *(Boolean|Object)*: whether `generate` the directory from the headings of markdown.
       defaults to true. It will `generate` the toc if no toc list in the specified heading(`toc` enabled).
@@ -88,6 +88,10 @@ var parseMarkdown = require('front-matter-markdown');
 ### v0.3
 
 + markdown inline options to control parser.
+  * toc
+  * heading: the toc list in the heading section.
+  * headingsAsToc
++ setOptionAlias function
 
 ```coffee
 markdownStr = """
@@ -95,8 +99,9 @@ markdownStr = """
   title: this is a title
   toc: false
   headingsAsToc: false
+  heading: Category
   ---
-  # table of contents
+  # Category
 
   * [Directory](./dir1)
     * [Directory2](/dir2)
@@ -104,9 +109,10 @@ markdownStr = """
 
   # this is a inline heading {#inline}
   """
-result = parseMarkdown(markdownStr) #=parseMarkdown markdownStr,
+result = parseMarkdown(markdownStr) #= parseMarkdown markdownStr,
                                     #   toc:false
                                     #   headingsAsToc: false
+                                    #   heading: 'Category'
 
 ```
 
