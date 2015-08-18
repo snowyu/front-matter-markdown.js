@@ -30,6 +30,7 @@ module.exports = fmMarkdown = (aContent, aOptions)->
   aContent = result.content
   result = result.data
   result.skipSize = vSkipSize if vSkipSize > 0
+  return result unless aContent
   unless result.content or aOptions.content is false
     defineProperty result, 'content', aContent
 
