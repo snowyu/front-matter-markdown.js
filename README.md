@@ -74,6 +74,7 @@ var parseMarkdown = require('front-matter-markdown');
       * **Note**: the `content` and `$compiled` attributes are non-enumerable.
     * `toc` *(Boolean)*: whether extract the directory from the list in the specified heading.
       defaults to false. the 'directoy' is put into `contents` attributes.
+    * `links` *(Boolean)*: merge the markdown links label to the result, default to false.
     * `heading` *(String|RegExp|ArrayOf(String))*: the toc list in the heading(s) to extract the directory.
       defaults to ['TOC', 'Table Of Content', 'Summary']
     * `headingsAsToc` *(Boolean|Object)*: whether `generate` the directory from the headings of markdown.
@@ -93,6 +94,7 @@ var parseMarkdown = require('front-matter-markdown');
   * headingsAsToc
 + setOptionAlias function
 * **broken**: toc, headingsAsToc options are defaults to false now.
++ add the links option: merge the markdown links label to the result, default to false.
 
 ```coffee
 markdownStr = """
@@ -109,6 +111,9 @@ markdownStr = """
   * [Directory3](#inline)
 
   # this is a inline heading {#inline}
+
+  [linkLabel1]: hi
+  [linkLabel2]: url "with title text"
   """
 result = parseMarkdown(markdownStr) #= parseMarkdown markdownStr,
                                     #   toc:false
