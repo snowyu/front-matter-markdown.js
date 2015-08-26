@@ -25,7 +25,7 @@ module.exports = class AstParser
     out
 
   tok: ->
-    return '' if @token == undefined || !@token.hasOwnProperty('type')
+    return '' unless @token and @token.hasOwnProperty('type')
 
     switch (@token.type)
       when 'table'
