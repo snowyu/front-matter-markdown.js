@@ -21,6 +21,18 @@ assignDefaults = (aOptions, aConfig)->
       aOptions[v] ?= aConfig[k]
   aOptions
 
+getNonNullKeys = (aObject)->
+  result = getKeys(aObject).filter (k)->aObject[k]?
+
+linksToData = (aLinks)->
+  result = {}
+  for k,v of aLinks
+    if getNonNullKeys(v).length is 1
+      result[k] = v.href
+    else
+      result[k] = v
+  result
+
 module.exports = fmMarkdown = (aContent, aOptions)->
 
   aOptions ?= {}
@@ -44,6 +56,7 @@ module.exports = fmMarkdown = (aContent, aOptions)->
     headings = ['toc', /table of content/, 'summary']
   compiled = markdown.lexer aContent
   defineProperty result, '$compiled', compiled unless aOptions.content is false
+  result = extend result, linksToData compiled.links if aOptions.links and compiled.links
 
   if aOptions.toc
     toc = getTocFromList(compiled, headings)

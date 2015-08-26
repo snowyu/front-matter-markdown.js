@@ -134,8 +134,38 @@ describe 'frontMatterMarkdown', ->
       ]
     assert.deepEqual actural, expected
     #console.log JSON.stringify actural
-
-
+  it 'should get config object from markdown string with summary heading and links', ->
+    actural = config(mkdn3, toc:true, headingsAsToc: true, links: true)
+    expected =
+      'config1': 123
+      'skipSize': 21
+      'ordered': false
+      'dir2': './dir2'
+      'dir3':
+        href: './dir3'
+        title: 'hi world'
+      'dir4': 'none'
+      'contents': [
+        {
+          'title': 'Dir1'
+          'path': './dir1'
+        }
+        {
+          'title': 'Dir2'
+          'contents': [
+            { 'title': 'Dir21' }
+            { 'title': 'Dir22' }
+          ]
+          'path': './dir2'
+          'ordered': false
+        }
+        {
+          'title': 'Dir3'
+          'hint': 'hi world'
+          'path': './dir3'
+        }
+      ]
+    assert.deepEqual actural, expected
 
 mkdn = """
 ---
@@ -187,4 +217,26 @@ heading221End
 [Heading21]: ./heading21
 [Heading221]: ./heading221
 [Heading22]: ./heading22
+"""
+
+mkdn3 = """
+---
+config1: 123
+---
+# Summary
+
+* [Dir1](./dir1)
+* [Dir2][dir2]
+  * Dir21
+  * Dir22
+* [Dir3][dir3]
+
+# Heading1
+
+heading1End
+
+[dir2]: ./dir2
+[dir3]: ./dir3 "hi world"
+[dir4]: none
+
 """
