@@ -45,6 +45,7 @@
   "devDependencies": {
     "chai": "~1.10.0",
     "coffee-coverage": "^0.6.2",
+    "cson": "^3.0.1",
     "grunt": "~0.4.5",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-coffee": "~0.12.0",
