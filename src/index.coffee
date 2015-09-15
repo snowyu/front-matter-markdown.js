@@ -35,7 +35,10 @@ linksToData = (aLinks)->
 
 module.exports = fmMarkdown = (aContent, aOptions)->
 
-  aOptions ?= {}
+  if isObject aOptions
+    aOptions = extend strict:true, aOptions
+  else
+    aOptions = strict:true
 
   result = matter(aContent, aOptions)
   vSkipSize = aContent.length - result.content.length

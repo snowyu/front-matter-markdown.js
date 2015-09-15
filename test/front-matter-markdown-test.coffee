@@ -14,6 +14,21 @@ config.setOptionAlias 'heading', 'heading'
 config.setOptionAlias 'headingsAsToc', 'headingsAsToc'
 
 describe 'frontMatterMarkdown', ->
+  it 'should throw error if front-matter(yaml) syntax error', ->
+      should.throw config.bind null, """
+      ---
+      force:false
+      raiseError: false
+      ---
+      """
+  it 'should not throw error if front-matter(yaml) syntax error when strict is false', ->
+      should.not.throw config.bind null, """
+      ---
+      force:false
+      raiseError: false
+      ---
+      """
+      , {strict:false}
   it 'should get config object from an empty string', ->
     actural = config '', toc:true
     expected = {}
