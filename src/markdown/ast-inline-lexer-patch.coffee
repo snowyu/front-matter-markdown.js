@@ -222,8 +222,8 @@ module.exports=[
         "cap[0].substring"
       ]
     ]
-    start1: 1105
-    start2: 1105
+    start1: 1116
+    start2: 1116
     length1: 35
     length2: 45
   }
@@ -231,7 +231,14 @@ module.exports=[
     diffs: [
       [
         0
-        "indexOf(cap[2]))"
+        "2]))"
+      ]
+      [
+        -1
+        '''
+          ;
+                  this.inLink = true
+        '''
       ]
       [
         1
@@ -241,14 +248,14 @@ module.exports=[
         0
         '''
           ;
-                  // In 
+            
         '''
       ]
     ]
-    start1: 1161
-    start2: 1161
-    length1: 32
-    length2: 33
+    start1: 1184
+    start2: 1184
+    length1: 36
+    length2: 9
   }
   {
     diffs: [
@@ -276,8 +283,8 @@ module.exports=[
         "this.output(cap["
       ]
     ]
-    start1: 1206
-    start2: 1206
+    start1: 1217
+    start2: 1217
     length1: 35
     length2: 45
   }
@@ -285,7 +292,14 @@ module.exports=[
     diffs: [
       [
         0
-        "s.output(cap[2])"
+        "[2])"
+      ]
+      [
+        -1
+        '''
+          ;
+                  this.inLink = false
+        '''
       ]
       [
         1
@@ -295,14 +309,14 @@ module.exports=[
         0
         '''
           ;
-                  // Out
+            
         '''
       ]
     ]
-    start1: 1238
-    start2: 1238
-    length1: 32
-    length2: 33
+    start1: 1261
+    start2: 1261
+    length1: 37
+    length2: 9
   }
   {
     diffs: [
@@ -330,8 +344,8 @@ module.exports=[
         "cap[0].substring"
       ]
     ]
-    start1: 1274
-    start2: 1274
+    start1: 1285
+    start2: 1285
     length1: 35
     length2: 45
   }
@@ -353,8 +367,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 1341
-    start2: 1341
+    start1: 1352
+    start2: 1352
     length1: 32
     length2: 33
   }
@@ -384,8 +398,8 @@ module.exports=[
         "cap[0].substring"
       ]
     ]
-    start1: 1551
-    start2: 1551
+    start1: 1581
+    start2: 1581
     length1: 35
     length2: 45
   }
@@ -403,12 +417,12 @@ module.exports=[
         0
         '''
           ;
-                  this.i
+                  // In 
         '''
       ]
     ]
-    start1: 1607
-    start2: 1607
+    start1: 1637
+    start2: 1637
     length1: 32
     length2: 33
   }
@@ -438,8 +452,8 @@ module.exports=[
         "this.output(cap["
       ]
     ]
-    start1: 1680
-    start2: 1680
+    start1: 1682
+    start2: 1682
     length1: 35
     length2: 45
   }
@@ -461,8 +475,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 1720
-    start2: 1720
+    start1: 1722
+    start2: 1722
     length1: 16
     length2: 17
   }
@@ -489,8 +503,8 @@ module.exports=[
         "cap[0].subst"
       ]
     ]
-    start1: 1781
-    start2: 1781
+    start1: 1754
+    start2: 1754
     length1: 27
     length2: 37
   }
@@ -512,8 +526,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 1844
-    start2: 1844
+    start1: 1817
+    start2: 1817
     length1: 32
     length2: 33
   }
@@ -551,8 +565,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 2028
-    start2: 2028
+    start1: 2001
+    start2: 2001
     length1: 25
     length2: 36
   }
@@ -582,8 +596,8 @@ module.exports=[
         "this.outputLink("
       ]
     ]
-    start1: 2198
-    start2: 2198
+    start1: 2171
+    start2: 2171
     length1: 35
     length2: 45
   }
@@ -613,8 +627,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 2294
-    start2: 2294
+    start1: 2267
+    start2: 2267
     length1: 16
     length2: 17
   }
@@ -644,8 +658,8 @@ module.exports=[
         "this.renderer.re"
       ]
     ]
-    start1: 2454
-    start2: 2454
+    start1: 2427
+    start2: 2427
     length1: 35
     length2: 45
   }
@@ -667,8 +681,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 2494
-    start2: 2494
+    start1: 2467
+    start2: 2467
     length1: 32
     length2: 33
   }
@@ -695,8 +709,8 @@ module.exports=[
         "cap[0].c"
       ]
     ]
-    start1: 2834
-    start2: 2834
+    start1: 2807
+    start2: 2807
     length1: 19
     length2: 29
   }
@@ -718,8 +732,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 2863
-    start2: 2863
+    start1: 2836
+    start2: 2836
     length1: 16
     length2: 17
   }
@@ -749,8 +763,8 @@ module.exports=[
         "this.outputL"
       ]
     ]
-    start1: 2965
-    start2: 2965
+    start1: 2938
+    start2: 2938
     length1: 27
     length2: 37
   }
@@ -772,8 +786,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 3008
-    start2: 3008
+    start1: 2981
+    start2: 2981
     length1: 16
     length2: 17
   }
@@ -803,8 +817,8 @@ module.exports=[
         "this.renderer.st"
       ]
     ]
-    start1: 3164
-    start2: 3164
+    start1: 3137
+    start2: 3137
     length1: 35
     length2: 45
   }
@@ -826,8 +840,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 3228
-    start2: 3228
+    start1: 3201
+    start2: 3201
     length1: 32
     length2: 33
   }
@@ -857,8 +871,8 @@ module.exports=[
         "this.renderer.em"
       ]
     ]
-    start1: 3357
-    start2: 3357
+    start1: 3330
+    start2: 3330
     length1: 35
     length2: 45
   }
@@ -880,8 +894,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 3417
-    start2: 3417
+    start1: 3390
+    start2: 3390
     length1: 32
     length2: 33
   }
@@ -911,8 +925,8 @@ module.exports=[
         "this.renderer.co"
       ]
     ]
-    start1: 3550
-    start2: 3550
+    start1: 3523
+    start2: 3523
     length1: 35
     length2: 45
   }
@@ -934,8 +948,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 3620
-    start2: 3620
+    start1: 3593
+    start2: 3593
     length1: 16
     length2: 17
   }
@@ -965,8 +979,8 @@ module.exports=[
         "this.renderer.ma"
       ]
     ]
-    start1: 3745
-    start2: 3745
+    start1: 3718
+    start2: 3718
     length1: 35
     length2: 45
   }
@@ -985,8 +999,8 @@ module.exports=[
         "; //FIXM"
       ]
     ]
-    start1: 3811
-    start2: 3811
+    start1: 3784
+    start2: 3784
     length1: 16
     length2: 17
   }
@@ -1016,8 +1030,8 @@ module.exports=[
         "this.renderer.br"
       ]
     ]
-    start1: 3969
-    start2: 3969
+    start1: 3942
+    start2: 3942
     length1: 35
     length2: 45
   }
@@ -1039,8 +1053,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 4008
-    start2: 4008
+    start1: 3981
+    start2: 3981
     length1: 16
     length2: 17
   }
@@ -1070,8 +1084,8 @@ module.exports=[
         "this.rendere"
       ]
     ]
-    start1: 4141
-    start2: 4141
+    start1: 4114
+    start2: 4114
     length1: 27
     length2: 37
   }
@@ -1093,8 +1107,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 4188
-    start2: 4188
+    start1: 4161
+    start2: 4161
     length1: 32
     length2: 33
   }
@@ -1121,8 +1135,8 @@ module.exports=[
         "this"
       ]
     ]
-    start1: 4333
-    start2: 4333
+    start1: 4306
+    start2: 4306
     length1: 11
     length2: 21
   }
@@ -1144,8 +1158,8 @@ module.exports=[
         '''
       ]
     ]
-    start1: 4379
-    start2: 4379
+    start1: 4352
+    start2: 4352
     length1: 16
     length2: 17
   }

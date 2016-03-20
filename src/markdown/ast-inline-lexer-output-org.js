@@ -40,19 +40,6 @@ function (src) {
 
     // html
     if (cap = this.rules.html.exec(src)) {
-      // Found a paragraph
-      if(cap[1] === 'p' && cap[2]) {
-        // Opening tag
-        out += cap[0].substring(0, cap[0].indexOf(cap[2]));
-        // In between the tag
-        out += this.output(cap[2]);
-        // Outer tag
-        out += cap[0].substring(cap[0].indexOf(cap[2])+cap[2].length);
-        // Advance parser
-        src = src.substring(cap[0].length);
-        continue;
-      }
-
       // Found a link
       if(cap[1] === 'a' && cap[2] && !this.inLink) {
         // Opening tag
@@ -61,6 +48,19 @@ function (src) {
         // In between the tag
         out += this.output(cap[2]);
         this.inLink = false;
+        // Outer tag
+        out += cap[0].substring(cap[0].indexOf(cap[2])+cap[2].length);
+        // Advance parser
+        src = src.substring(cap[0].length);
+        continue;
+      }
+
+      // Found HTML that we should parse
+      if(cap[1] && !isHTMLBlock(cap[1]) && cap[2]) {
+        // Opening tag
+        out += cap[0].substring(0, cap[0].indexOf(cap[2]));
+        // In between the tag
+        out += this.output(cap[2]);
         // Outer tag
         out += cap[0].substring(cap[0].indexOf(cap[2])+cap[2].length);
         // Advance parser

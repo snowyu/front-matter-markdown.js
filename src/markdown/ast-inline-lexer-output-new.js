@@ -40,8 +40,8 @@ function(src) {
 
     // html
     if (cap = this.rules.html.exec(src)) {
-      // Found a paragraph
-      if(cap[1] === 'p' && cap[2]) {
+      // Found a link
+      if(cap[1] === 'a' && cap[2] && !this.inLink) {
         // Opening tag
         out = out.concat(cap[0].substring(0, cap[0].indexOf(cap[2])));
         // In between the tag
@@ -53,14 +53,12 @@ function(src) {
         continue;
       }
 
-      // Found a link
-      if(cap[1] === 'a' && cap[2] && !this.inLink) {
+      // Found HTML that we should parse
+      if(cap[1] && !isHTMLBlock(cap[1]) && cap[2]) {
         // Opening tag
         out = out.concat(cap[0].substring(0, cap[0].indexOf(cap[2])));
-        this.inLink = true;
         // In between the tag
         out = out.concat(this.output(cap[2]));
-        this.inLink = false;
         // Outer tag
         out = out.concat(cap[0].substring(cap[0].indexOf(cap[2])+cap[2].length));
         // Advance parser
