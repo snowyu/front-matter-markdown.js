@@ -83,6 +83,11 @@ var parseMarkdown = require('front-matter-markdown');
         defaluts to 3.
       * `firstLevel` *(Number)*: the first level to `generate` the directory from the headings of markdown.
         defaluts to 1.
+  * `Returns`:
+    * `skipSize` *Number*: the front-matter configuration size if exists
+    * `content` *String*: the markdown string after removing the front-matter configuration. (available on `content` is true)
+    * `$compiled` *Object*: the compiled markdown tree.(available on `content` is true)
+    * `contents` *Object*:  the directory from the list in the specified heading. (available on `toc`)
 
 ## Changes
 
