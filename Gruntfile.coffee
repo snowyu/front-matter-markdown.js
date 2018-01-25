@@ -52,7 +52,7 @@ module.exports = (grunt) ->
           'src/**/*.js'
           'test/*.coffee'
         ]
-    
+
 
   #grunt.loadTasks('tasks')
 
