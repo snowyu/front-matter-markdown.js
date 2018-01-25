@@ -40,7 +40,13 @@ module.exports = fmMarkdown = (aContent, aOptions)->
   else
     aOptions = strict:true
 
-  result = matter(aContent, aOptions)
+  if aOptions.strict
+    result = matter(aContent, aOptions)
+  else
+    try
+      result = matter(aContent, aOptions)
+    catch err
+      result = content:aContent, data: error: err
   vSkipSize = aContent.length - result.content.length
   aContent = result.content
   result = result.data
