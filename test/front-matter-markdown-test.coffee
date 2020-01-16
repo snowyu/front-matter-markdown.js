@@ -1,3 +1,7 @@
+global.Reflect = Object unless global.Reflect
+# require('reflect-metadata')
+# Reflect.defineProperty = Object.defineProperty unless Reflect.defineProperty
+
 chai            = require 'chai'
 sinon           = require 'sinon'
 sinonChai       = require 'sinon-chai'
