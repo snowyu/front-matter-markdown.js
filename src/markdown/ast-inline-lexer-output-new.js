@@ -1,4 +1,4 @@
-function(src) {
+module.exports = function(src) {
   var out = []
     , link
     , text
